@@ -289,6 +289,87 @@ resource "google_storage_bucket_object" "deploy_airflow_data_postgres_create_sch
     ]  
 }
 
+####################################################################################
+# Workflows Terraform
+####################################################################################
+
+# Upload the Airflow "data/template" files
+resource "google_storage_bucket_object" "deploy_airflow_data_bigquery_dataform_execute" {
+  name   = "${local.local_composer_data_path}/workflow/terraform_bigquery_dataform_execute.yaml"
+  bucket = local.local_composer_bucket_name
+  source = "../cloud-composer/data/workflow/terraform_bigquery_dataform_execute.yaml"
+
+  depends_on = [
+    ]
+}
+
+# Upload Terraform Deploy DAG
+resource "google_storage_bucket_object" "deploy_airflow_dag_sample-terraform-workflows-deploy" {
+  name   = "${local.local_composer_dag_path}/sample-terraform-workflows-deploy.py"
+  bucket = local.local_composer_bucket_name
+  source = "../cloud-composer/dags/sample-terraform-workflows-deploy.py"
+
+  depends_on = [
+    time_sleep.wait_for_airflow_dag_sync
+  ]
+}
+
+# Upload Terraform Destroy DAG (Copy the Deploy AS THE Destroy)
+resource "google_storage_bucket_object" "deploy_airflow_dag_sample-terraform-workflows-destroy" {
+  name   = "${local.local_composer_dag_path}/sample-terraform-workflows-destroy.py"
+  bucket = local.local_composer_bucket_name
+  source = "../cloud-composer/dags/sample-terraform-workflows-deploy.py"
+
+  depends_on = [
+    time_sleep.wait_for_airflow_dag_sync
+  ]
+}
+
+# Backend State file
+# The bucket for the state must be substituted.  We do not want to do this for the other files since we
+# would need to escape all the ${var} with $${var}.
+resource "google_storage_bucket_object" "deploy_airflow_data_terraform_workflows_backend" {
+  name   = "${local.local_composer_data_path}/terraform/workflows/backend.tf"
+  bucket = local.local_composer_bucket_name
+
+  content = templatefile("../cloud-composer/data/terraform/workflows/backend.tf",
+    {
+      code_bucket_name = var.code_bucket_name
+    })
+
+  depends_on = [
+  ]
+}
+
+# Variables file
+resource "google_storage_bucket_object" "deploy_airflow_data_terraform_workflows_variables" {
+  name   = "${local.local_composer_data_path}/terraform/workflows/variables.tf"
+  bucket = local.local_composer_bucket_name
+  source = "../cloud-composer/data/terraform/workflows/variables.tf"
+
+  depends_on = [
+  ]
+}
+
+# Main Resources file
+resource "google_storage_bucket_object" "deploy_airflow_data_terraform_workflows" {
+  name   = "${local.local_composer_data_path}/terraform/workflows/terraform.tf"
+  bucket = local.local_composer_bucket_name
+  source = "../cloud-composer/data/terraform/workflows/terraform.tf"
+
+  depends_on = [
+  ]
+}
+
+# Bash script to run and install Terraform
+resource "google_storage_bucket_object" "deploy_airflow_data_sample_terraform_workflows" {
+  name   = "${local.local_composer_data_path}/sample_terraform_workflows.sh"
+  bucket = local.local_composer_bucket_name
+  source = "../cloud-composer/data/sample_terraform_workflows.sh"
+
+  depends_on = [
+  ]
+}
 
 ####################################################################################
 # Dataplex Terraform
