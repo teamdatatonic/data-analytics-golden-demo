@@ -1,10 +1,11 @@
 # Data-Analytics-Golden-Demo
 Deploys an end-to-end Data Analytics technical walkthrough on Google Cloud.  All the services are connected, configured and ready to run.  The deployed artifacts can be run in any order letting you set your own path through the system.  The system has 70 to 700+ million rows of data so that you can show "true life" performance, scale and integration of various services.  The system orchestates itself using Airflow, communicates over private IP addresses and has working code to demonstrate how to build an end to end system.
 
-## Monthly Video Update (June 2023)
-[![Monthly Update](./images/MonthlyUpdate.png)](https://youtu.be/nTJAxm8oiF4)
+## Monthly Video Update (July 2023)
+[![Monthly Update](./images/MonthlyUpdate.png)](https://youtu.be/Ljbvpg-tZEM)
 
 Prior Months
+- [June 2023](https://youtu.be/nTJAxm8oiF4)
 - [May 2023](https://youtu.be/VAIBgDPC-w8)
 
 
@@ -79,12 +80,13 @@ Prior Months
 
 ## Deploy
 ### Demo Cost
-- Currently the demo costs about $20 USD to run.
-- Several of the demos start up a service and then shut it down after 4 hours via Airflow automation.
-- Composer is the largest daily cost ~$17 per day.  You can technically delete Composer, but then you lack the automation it provides.  You would want to run any DAGs you are interested in deploying before removing Composer.
-
-
-
+- The demo costs about $20 USD a day to run or $2 USD per day if you remove Composer.
+- Several of the demos start up a service and then shut it down after 4 hours via Airflow automation to save on costs.
+- To save on costs you can delete Composer since it costs ~$17 USD per day.
+  - Once you remove Composer cost drops to ~$2 USD per day. 
+  - You will lack the automation Composer provides.
+  - You would want to run any DAGs you are interested in deploying before removing Composer.
+  
 
 ## Diagrams
 ![alt tag](./images/Technical-Architecture.png)
@@ -106,10 +108,10 @@ Prior Months
 - Deployment [Video](https://youtu.be/QvCCo35qgys)
 - Post Deployment Verification [Video](https://youtu.be/r1mp4Yve0VY)
 - **The following IAM roles are required to deploy the solution**
- - Prerequisite:  Billing Account User (to create the project with billing)
- - Prerequisite:  Organization Administrator (to create all assets)
- - Prerequisite:  Organization Policy Administrator (to change org policies)
- - Optional:      Folder Editor (if you alter the script to place the project in a folder)
+   - Prerequisite:  Billing Account User (to create the project with billing)
+   - Prerequisite:  Organization Administrator (to create all assets)
+   - Prerequisite:  Organization Policy Administrator (to change org policies)
+   - Optional:      Folder Editor (if you alter the script to place the project in a folder)
 1. Open a Google Cloud Shell: http://shell.cloud.google.com/
 2. Type: ```git clone https://github.com/GoogleCloudPlatform/data-analytics-golden-demo```
 3. Switch the prompt to the directory: ```cd data-analytics-golden-demo```
@@ -124,31 +126,31 @@ Prior Months
 - Deployment [Video](https://youtu.be/SLzr737SHXM)
 - Post Deployment Verification [Video](https://youtu.be/r1mp4Yve0VY)
 - **The following items are required to deploy the solution**
- - Prerequisite: You will need a project created for you (IT can do this for you)
- - Prerequisite: You will need to be an Owner (IAM role) of the project to run the below script
- - Prerequisite: You will need an Organization Policy Administrator to disable the following Org Policies (IT can do this for you)
-   - requireOsLogin = false
-   - requireShieldedVm = false
-   - allowedIngressSettings = allow all
-   - allowedPolicyMemberDomains = allow all
-   - restrictVpcPeering = allow all
+   - Prerequisite: You will need a project created for you (IT can do this for you)
+   - Prerequisite: You will need to be an Owner (IAM role) of the project to run the below script
+   - Prerequisite: You will need an Organization Policy Administrator to disable the following Org Policies (IT can do this for you)
+      - requireOsLogin = false
+      - requireShieldedVm = false
+      - allowedIngressSettings = allow all
+      - allowedPolicyMemberDomains = allow all
+      - restrictVpcPeering = allow all
 1. Open a Google Cloud Shell: http://shell.cloud.google.com/
 2. Type: ```git clone https://github.com/GoogleCloudPlatform/data-analytics-golden-demo```
 3. Switch the prompt to the directory: ```cd data-analytics-golden-demo```
 4. Update the hard coded values in ```deploy-use-existing-project-non-org-admin.sh```
 5. Run ```source deploy-use-existing-project-non-org-admin.sh```
 6. Your Organization Policy Administrator can then reenable the following Organization Policies
-  - (DO NOT RE-ENABLE) requireOsLogin = false
-  - (RE-ENABLE) requireShieldedVm = false
-  - (RE-ENABLE) allowedIngressSettings = allow all
-  - (RE-ENABLE) allowedPolicyMemberDomains = allow all
-  - (RE-ENABLE) restrictVpcPeering = allow all
+   - (DO NOT RE-ENABLE) requireOsLogin = false
+   - (RE-ENABLE) requireShieldedVm = false
+   - (RE-ENABLE) allowedIngressSettings = allow all
+   - (RE-ENABLE) allowedPolicyMemberDomains = allow all
+   - (RE-ENABLE) restrictVpcPeering = allow all
 
 
 
 
 ### To deploy the project to a different region
-1. By default the solution deploys to us-central1 region and US (multi-region)
+1. By default the solution deploys to us-west{x} region and US (multi-region)
 2. To deploy to another region review the code in [deploy-europe-region.sh](deploy-europe-region.sh)
 3. You can run either of the above deployment methods.  Copy the Terraform  "region" parameters to either of the above scripts.
 
