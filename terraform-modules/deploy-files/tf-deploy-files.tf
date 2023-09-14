@@ -301,9 +301,9 @@ resource "google_storage_bucket_object" "deploy_airflow_data_postgres_create_sch
 
 # Upload the Airflow "data/template" files
 resource "google_storage_bucket_object" "deploy_airflow_data_bigquery_dataform_execute" {
-  name   = "${local.local_composer_data_path}/workflow/terraform_bigquery_dataform_execute.yaml"
+  name   = "${local.local_composer_data_path}/workflows/terraform_bigquery_dataform_execute.yaml"
   bucket = local.local_composer_bucket_name
-  source = "../cloud-composer/data/workflow/terraform_bigquery_dataform_execute.yaml"
+  source = "../cloud-composer/data/workflows/terraform_bigquery_dataform_execute.yaml"
 
   depends_on = [
     ]
