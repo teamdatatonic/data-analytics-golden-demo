@@ -1,0 +1,36 @@
+# Cloud Workflows Demo
+
+
+This module is for deploying a demo [Cloud Workflow](https://cloud.google.com/workflows/docs/overview) which runs an existing Dataform workflow.
+
+## Deploy 
+
+The Composer DAG [`sample-terraform-workflows-deploy.py`](../../sample_terraform_workflows.sh) is used to automatically deploy and tear down the Terraform module.
+To do so, it runs a bash script called [`sample_terraform_workflows.sh`](../../sample_terraform_workflows.sh).
+
+The Cloud Workflow itself is defined in the file [`terraform_bigquery_dataform_execute.yaml`](../../workflows/terraform_bigquery_dataform_execute.yaml).
+
+## Run the Demo
+
+### Prerequisites
+
+- Since the Cloud Workflow runs the [Dataform demo workflow](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_create_demo_dataform.sql), the latter needs to be set up prior to running this demo
+- In Dataform, synchronize the `demo_flow` environment with the main branch.
+
+### Run
+
+As an example, an [eventarc](https://cloud.google.com/eventarc/docs) trigger is set up to run the Cloud Workflow whenever a file is dropped into the Dataproc bucket.
+You can test the eventarc trigger by adding a file to this bucket, which will trigger the Cloud Workflow which will in turn run the Dataform workflow.
+
+Alternatively, you can run the Cloud Workflow manually.
+
+Check both the Cloud Workflow and Dataform workflow execution logs to ensure it ran successfully.
+
+## Links
+
+- [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/cloud-composer/data/workflows/terraform_bigquery_dataform_execute.yaml)
+- Video
+
+## Diagram
+
+![alt tag](../../../../images/Cloud-Workflows-Diagram.png)
