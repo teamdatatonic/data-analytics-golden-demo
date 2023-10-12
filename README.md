@@ -1,12 +1,16 @@
 # Data-Analytics-Golden-Demo
 Deploys an end-to-end Data Analytics technical walkthrough on Google Cloud.  All the services are connected, configured and ready to run.  The deployed artifacts can be run in any order letting you set your own path through the system.  The system has 70 to 700+ million rows of data so that you can show "true life" performance, scale and integration of various services.  The system orchestates itself using Airflow, communicates over private IP addresses and has working code to demonstrate how to build an end to end system.
 
-## Monthly Video Update (July 2023)
-[![Monthly Update](./images/MonthlyUpdate.png)](https://youtu.be/Ljbvpg-tZEM)
+## Monthly Video Update (September 2023)
+
+[![Monthly Update](./images/MonthlyUpdate.png)](https://youtu.be/7I3jw-nNMC8)
 
 Prior Months
+- [August 2023](https://youtu.be/QGJYd_6NslU)
+- [July 2023](https://youtu.be/Ljbvpg-tZEM)
 - [June 2023](https://youtu.be/nTJAxm8oiF4)
 - [May 2023](https://youtu.be/VAIBgDPC-w8)
+
 
 
 ## Demo Artifacts
@@ -16,8 +20,9 @@ Prior Months
 ## Table of Contents (All Links and Videos are coming soon)
 |Category|Title|Description|Link|Video||
 |---|---|---|---|---|---|
-| Ready-To-Go Demos | Rideshare Plus (Analytics Lakehouse)|This is an end to end demo of an Analytics Lakehouse.  The demo goes through the creation of a fictitious company that wants to predict high value rides for rideshare drivers.  The demo takes you through the process from the raw zone to the curated zone and highlights our analytics stack.| [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/rideshare_lakehouse_curated/sp_demo_script.sql) | [Video](https://youtu.be/Yru78Pk1jMM) |
-| | BigQuery Technical Overview | See some top features in BigQuery.  We will explore loading data into BigQuery, streaming data directly into BigQuery, using change data capture with BigQuery and even federated queries with Spanner.  We will then explore data governance, data quality, security and data lineage.  After we have clean and secure data we will build some machine learning models, search billions of rows and explore unstructured data analytics.  Finally, we will explore BigQuery’s serverless infrastructure which includes autoscaling along with various monitoring tools. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_technical_overview.sql) | [Video](https://youtu.be/bMS4p2XHMpE) |
+| Ready-To-Go Demos | Rideshare Plus (AI Lakehouse - LLMs)| A new end to end demo where we use our text-bison (PaLM) LLM directly within BigQuery to read customer reviews and extract various pieces of data from each review.  The data will then be used to create a complete employee and customer profile form this data.  At the same time qualitative data analysis will be done and added to each profile.  The demo highlight how LLMs can work with text data and create valuable analytics from the context.  Please view the new Cloud Run website along with the following notebook to run the demo. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/colab-enterprise/rideshare-llm/rideshare_llm_ai_lakehouse_demo.ipynb) |
+| | Rideshare Plus (AI Lakehouse - Predict and Streaming)|This is an end to end demo of an AI Lakehouse.  The demo goes through the creation of a fictitious company that wants to predict high value rides for rideshare drivers.  The demo takes you through the process from the raw zone to the curated zone and highlights our analytics stack.| [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/rideshare_lakehouse_curated/sp_demo_script.sql) | [Video](https://youtu.be/Yru78Pk1jMM) |
+| | BigQuery Technical Overview | See some top features in BigQuery.  We will explore loading data into BigQuery, streaming data directly into BigQuery, using change data capture with BigQuery and even federated queries with Spanner.  We will then explore data governance, data quality, security and data lineage.  After we have clean and secure data we will build some machine learning models, search billions of rows and explore unstructured data analytics.  Finally, we will explore BigQuery’s serverless infrastructure which includes autoscaling along with various monitoring tools.  | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_technical_overview.sql) | [Video](https://youtu.be/bMS4p2XHMpE) |
 | | High Level Overview Demo | The high level overview highlights some key features: Looker, BigQuery, Analytics Hub, OMNI, BQML. | Link | Video |
 | | Technical Demo 1 | This shows: Data Lake, Dataplex, Data Catalog, BigQuery, BQML, BigQuery security and Jupyter notebooks. | Link | Video |
 | How to Deploy | Cloud Shell | You can deploy the demo via cloud shell to either a new project or an existing project | [Link](#deploy) | Video |
@@ -36,10 +41,10 @@ Prior Months
 | | PySpark Data Import | Show Spark loading/ETL data into BigQuery.  Read a CSV file, add a column and write to BigQuery. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/preview-features-public/sp_demo_bigspark_read_csv_load_bq_table.sql) | Video |
 | | BigSpark with Iceberg Metastore | Learn how to use Iceberg with BigLake Metastore.  This will process data and create Iceberg tables with BigSpark.  The tables will also be placed in BigQuery. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/rideshare_lakehouse_enriched/sp_iceberg_spark_transformation.sql) | Video |
 | BigQuery Machine Learning (BQML) | Anomaly Detection | Want to run Anomaly Detection on Fares to see if things are not looking right? | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_machine_learning_anomaly_fee_amount.sql) | Video |
-| | Jupyter Notebook Creating TensorFlow model | Use a Jupyter Notebook to create a TensorFlow that will then be imported into BigQuery. See "Importing TensorFlow model into BigQuery" to import the model. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/notebooks/BigQuery-Create-TensorFlow-Model.ipynb) | Video |
+| | Jupyter Notebook Creating TensorFlow model | Use a Jupyter Notebook to create a TensorFlow that will then be imported into BigQuery. See "Importing TensorFlow model into BigQuery" to import the model. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/colab-enterprise/taxi-dataset-demo/BigQuery-Create-TensorFlow-Model.ipynb) | Video |
 | | Importing TensorFlow model into BigQuery | Import a model into BigQuery, score data, compare results to notebook.  This is a great way to score data without data movement. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_machine_learning_import_tensorflow.sql) | Video |
 | | Predicting Taxi Tip Amounts using Linear Regression | Predict tip amounts for each cab ride. Show how easy it is to build a quick model in BigQuery. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_machine_learning_tip_amounts.sql) | Video |
-| | Easily query BigQuery from Jupyter notebooks | Data scientists need to be able to query BigQuery quickly and easily.  This shows how they can access the data in BigQuery with ease. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/notebooks/BigQuery-Demo-Notebook.ipynb) | Video |
+| | Easily query BigQuery from Jupyter notebooks | Data scientists need to be able to query BigQuery quickly and easily.  This shows how they can access the data in BigQuery with ease. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/colab-enterprise/taxi-dataset-demo/BigQuery-Demo-Notebook.ipynb) | Video |
 | BigSearch | 5 Billion Rows | Run BigSearch on 5 billion rows of log files (5 TB).  Compare to a non-indexed table. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_bigsearch.sql) | Video |
 | | 50 Billion Rows | Run on 50 billion rows of data (60 TB) to show our indexing performance at scale.  Currently internal since this is a lot of data. | Link | Video |
 | BigLake | BigLake tables with Security | See how to create a BigLake table and secure it with row and column level access. | [Link](https://github.com/GoogleCloudPlatform/data-analytics-golden-demo/blob/main/sql-scripts/taxi_dataset/sp_demo_biglake.sql) | Video |
@@ -103,6 +108,11 @@ Prior Months
 
 
 ## Deploy
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/?terminal=true&show=terminal&cloudshell_git_repo=https%3A%2F%2Fgithub.com%2FGoogleCloudPlatform%2Fdata-analytics-golden-demo)
+
+After the repo is cloned you would type ```source deploy.sh``` to deploy.
+
 ### To deploy to New Project (Requires Elevated Privileges)
 - Deployment [Video](https://youtu.be/QvCCo35qgys)
 - Post Deployment Verification [Video](https://youtu.be/r1mp4Yve0VY)
@@ -147,12 +157,10 @@ Prior Months
 
 
 
-
 ### To deploy the project to a different region
 1. By default the solution deploys to us-west{x} region and US (multi-region)
 2. To deploy to another region review the code in [deploy-europe-region.sh](deploy-europe-region.sh)
 3. You can run either of the above deployment methods.  Copy the Terraform  "region" parameters to either of the above scripts.
-
 
 
 
@@ -164,11 +172,9 @@ Prior Months
    - Once the DAG is complete, you can run the solution
 
 
-
-
 ### Possible  Deployment Errors:
 1. If the script fails to enable a service or timeouts, you can rerun and if that does not work, run ```source clean-up.sh``` and start over
-2. If the script has a security type message (unauthorized), then double check the configure roles/IAM security.
+2. If the script has a security type message (unauthorized), then double check the configure roles/IAM security.  Your user account is probably not an Owner of the project or Org Admin if creating the project.
 3. When using Cloud Shell: If you get a "networking error" with some dial tcp message [2607:f8b0:4001:c1a::5f], then your cloud shell has a networking glitch, not the Terraform network.  Restart the deployment "source deploy.sh". (e.g. Error creating Network: Post ```https://compute.googleapis.com/compute/beta/projects/bigquery-demo-xvz1143xu9/global/networks?alt=json```: dial tcp [2607:f8b0:4001:c1a::5f]:443: connect: cannot assign requested address).  This typically happens on WiFi.
 
 
@@ -176,24 +182,26 @@ Prior Months
 
 ## Folders
 - cloud-composer
- - dags - all the DAGs for Airflow which run the system and seed the data
- - data - all the bash and SQL scripts to deploy
-- dataflow
- - Dataflow job that connects to the public Pub/Sub sample streaming taxi data.  You start this using composer.
+   - dags - all the DAGs for Airflow which run the system and seed the data
+   - data - all the bash and SQL scripts to deploy
+   - dataflow
+ - dataflow 
+   - Dataflow job that connects to the public Pub/Sub sample streaming taxi data.  You start this using composer.
 - dataproc
- - Spark code to that is used to process the initial downloaded data
-- notebooks
- - Sample notebooks that can be run in Vertex AI.  To create the managed notebook, use the DAG in composer.
-- sql-scripts
- - The BigQuery SQL sample scripts. These are currently deployed as stored procedures.  You can edit each stored procedure and run the sample code query by query.
+   - Spark code to that is used to process the initial downloaded data
+- colab-enterprise
+   - Sample notebooks that can be run in Vertex AI.  To create the managed notebook, use the DAG in composer.
+   - sql-scripts
+ - sql-scripts
+   - The BigQuery SQL sample scripts. These are currently deployed as stored procedures.  You can edit each stored procedure and run the sample code query by query.
 - terraform
- - the entry point for when deploying via cloud shell or your local machine.  This uses service account impersonation
+   - The entry point for when deploying via cloud shell or your local machine.  This uses service account impersonation.
 - terraform-modules
- - api - enables the GCP apis
- - org-policies - sets organization policies at the project level that have to be "disabled" to deploy the resources.
- - org-policies-deprecated - an older approach for org policies and is needed when your cloud build account is in a different domain
- - project - creates the cloud project if a project number is not provided
- - resources - the main set of resources to deploy
- - service-account - creates a service account if a project numnber is not provided.  The service account will be impersonated during the deployment.
- - service-usage - enables the service usage API as the main user (non-impersonated)
- - sql-scripts - deploys the sql scripts
+   - api - enables the GCP apis
+   - org-policies - sets organization policies at the project level that have to be "disabled" to deploy the resources.
+   - org-policies-destroy - commented out org policies so we can revert the org policies back to their original state.
+   - project - creates the cloud project if a project number is not provided
+   - resources - the main set of resources to deploy
+   - service-account - creates a service account if a project numnber is not provided.  The service account will be impersonated during the deployment.
+   - service-usage - enables the service usage API as the main user (non-impersonated)
+   - sql-scripts - deploys the sql scripts
