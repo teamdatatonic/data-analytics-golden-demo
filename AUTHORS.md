@@ -6,3 +6,4 @@
 # source control.
 Google LLC
 Adam Paternostro
+Datatonic (Anton Bankovskyi, Ash Sultan, William Braik)
