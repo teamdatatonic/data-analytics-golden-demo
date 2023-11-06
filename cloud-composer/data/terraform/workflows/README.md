@@ -5,10 +5,9 @@ This module is for deploying a demo [Cloud Workflow](https://cloud.google.com/wo
 
 ## Deploy 
 
-The [`sample-terraform-workflows-deploy.py`](../../../dags/sample-terraform-workflows-deploy.py) is script is used to automatically deploy and tear down the Terraform module for this demo via Composer DAGs.
+The [`sample-terraform-workflows-deploy.py`](../../../dags/sample-terraform-workflows-deploy.py) script is used to automatically deploy and tear down the Terraform module for this demo via Airflow DAGs.
 To do so, it runs a bash script called [`sample_terraform_workflows.sh`](../../sample_terraform_workflows.sh).
-Please review those files for additional details.
-Run the `sample-terraform-workflows-deploy` DAG in Composer to deploy the module.
+You can simply run the `sample-terraform-workflows-deploy` DAG in Airflow to deploy the module.
 
 The Cloud Workflow itself is defined in the [`terraform_bigquery_dataform_execute.yaml`](../../workflows/terraform_bigquery_dataform_execute.yaml) file.
 
@@ -22,7 +21,7 @@ The Cloud Workflow itself is defined in the [`terraform_bigquery_dataform_execut
 ### Run
 
 As an example, an [eventarc](https://cloud.google.com/eventarc/docs) trigger is set up to run the Cloud Workflow whenever a file is dropped into the Dataproc bucket.
-You can test the eventarc trigger by adding a file to this bucket, triggering the Cloud Workflow which will in turn run the Dataform workflow.
+You can test the eventarc trigger by adding a file to this bucket - this will trigger the Cloud Workflow which will in turn run the Dataform workflow.
 
 Alternatively, you can run the Cloud Workflow manually.
 
